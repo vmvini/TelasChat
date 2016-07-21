@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_bottom_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/border"
+    tools:context="io.github.vmvini.exerciciopdm.SecondActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/white">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="IFPBGroupChat"
+            android:background="@color/header_profile"
+            android:textColor="@android:color/white"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textStyle="bold"
+
+            android:id="@+id/second.header.text" />
+
+        <RelativeLayout
+            android:id="@+id/second.container.profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/profile"
+            android:paddingBottom="10dp"
+            android:layout_below="@id/second.header.text">
+
+            <FrameLayout
+                android:id="@+id/second.profile.wrapper"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/second.pic"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/default_user" />
+
+                <ImageView
+                    android:id="@+id/second.circle_crop"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/transp_grey_circle"
+                    android:layout_gravity="center" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="vmvini"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/second.profile.wrapper"
+                android:layout_centerHorizontal="true"
+                android:textSize="22dp"
+                android:id="@+id/second.username" />
+
+
+
+
+
+        </RelativeLayout>
+
+        <GridView
+
+            android:id="@+id/second.contacts"
+            android:layout_below="@+id/second.container.profile"
+            android:layout_centerHorizontal="true"
+            android:numColumns="1"
+            android:gravity="center"
+            android:columnWidth="100dp"
+            android:stretchMode="columnWidth"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingBottom="30dp"
+
+            />
+
+
+    </RelativeLayout>
+</RelativeLayout>
