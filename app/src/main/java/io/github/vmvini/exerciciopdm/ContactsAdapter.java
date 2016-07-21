@@ -23,8 +23,8 @@ public class ContactsAdapter extends BaseAdapter {
     private Users users;
     private Context context;
 
-    public ContactsAdapter(Context context){
-        users = new Users();
+    public ContactsAdapter(Context context, Users users){
+        this.users = users;
 
         this.context = context;
     }

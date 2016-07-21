@@ -1,11 +1,13 @@
 package io.github.vmvini.exerciciopdm;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by vmvini on 20/07/16.
  */
-public class User {
+
+public class User implements Serializable {
 
     private String name;
 
