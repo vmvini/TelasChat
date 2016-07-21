@@ -70,12 +70,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/chat.header"
-            android:layout_marginBottom="50dip" >
+            android:layout_marginBottom="50dip"
+            >
 
             <ListView
                 android:id="@+id/chat_messages"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                />
         </LinearLayout>
 
 
@@ -93,33 +96,25 @@
                 android:hint="Digite sua mensagem..."
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-
-
                 android:id="@+id/chat.sendmsg"
-
                 android:layout_marginLeft="5dp"
-
                 android:background="@drawable/sendmessage"
                 android:singleLine="true"
-                android:maxWidth="300dp"
+                android:maxWidth="500dp"
                 android:layout_gravity="bottom"
                 android:padding="10dp"
                 android:gravity="center_vertical|left"
                 android:maxEms="10"
                 >
-
-
-
             </EditText>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:text="OK"
+                android:background="@drawable/sendbutton"
                 android:layout_gravity="bottom"
                 android:gravity="center_vertical|center"
-
-
+                android:layout_marginLeft="10dp"
                 />
 
 

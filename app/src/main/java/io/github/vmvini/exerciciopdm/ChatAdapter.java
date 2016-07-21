@@ -76,7 +76,7 @@ public class ChatAdapter extends BaseAdapter {
 
     private static class MessageView {
         public TextView msgContent;
-        public TextView txtInfo;
+
         public LinearLayout rootBubble;
         public LinearLayout bubble;
     }
@@ -84,7 +84,7 @@ public class ChatAdapter extends BaseAdapter {
     private MessageView createViewHolder(View view) {
         MessageView holder = new MessageView();
         holder.msgContent = (TextView) view.findViewById(R.id.chat_message_content);
-        holder.txtInfo = (TextView) view.findViewById(R.id.chat_txtInfo);
+
         holder.bubble = (LinearLayout) view.findViewById(R.id.chat_message_bubble);
         holder.rootBubble = (LinearLayout) view.findViewById(R.id.chat_root_message);
         return holder;
@@ -110,9 +110,6 @@ public class ChatAdapter extends BaseAdapter {
             layoutParams.gravity = Gravity.RIGHT;
             holder.msgContent.setLayoutParams(layoutParams);
 
-            layoutParams = (LinearLayout.LayoutParams) holder.txtInfo.getLayoutParams();
-            layoutParams.gravity = Gravity.RIGHT;
-            holder.txtInfo.setLayoutParams(layoutParams);
         }
         else{
             holder.bubble.setBackgroundResource(R.drawable.other_message);
@@ -131,9 +128,6 @@ public class ChatAdapter extends BaseAdapter {
             layoutParams.gravity = Gravity.LEFT;
             holder.msgContent.setLayoutParams(layoutParams);
 
-            layoutParams = (LinearLayout.LayoutParams) holder.txtInfo.getLayoutParams();
-            layoutParams.gravity = Gravity.LEFT;
-            holder.txtInfo.setLayoutParams(layoutParams);
         }
 
 
