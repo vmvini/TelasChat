@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background">#879bb2</color>
+    <color name="password">#9EAEC1</color>
+    <color name="signin">#4C698B</color>
+    <color name="border">#4A4A4A</color>
+    <color name="profile">#CCCCCC</color>
+    <color name="header_profile">#4A90E2</color>
+    <color name="me_msg">#F4DBF9</color>
+    <color name="other_msg">#D8F0BE</color>
+    <color name="sendmsg">#417505</color>
+
+</resources>
