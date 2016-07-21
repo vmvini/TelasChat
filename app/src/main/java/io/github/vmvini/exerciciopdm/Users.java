@@ -8,19 +8,28 @@ import java.util.List;
  */
 public class Users {
 
-    private User eu, anamaria, joao, mariana;
+    private User eu, anamaria, joao, mariana, mario, luigi;
     private List<User> users;
 
     public Users(){
 
         eu = new User();
         eu.setName("Marcus Vinícius");
+
         anamaria = new User();
         anamaria.setName("Ana Maria");
+
         joao = new User();
         joao.setName("João Pedro");
+
         mariana = new User();
         mariana.setName("Mariana");
+
+        mario = new User();
+        mario.setName("Mario");
+
+        luigi = new User();
+        luigi.setName("Luigi");
 
 
 
@@ -31,6 +40,8 @@ public class Users {
         users.add(anamaria);
         users.add(joao);
         users.add(mariana);
+        users.add(mario);
+        users.add(luigi);
 
 
     }
@@ -56,7 +67,15 @@ public class Users {
             chat.addMensagem("oi", eu);
             chat.addMensagem("gostaria de saber se você encontrou aquele site", joao);
         }
+        else if(user2.getName().equals("Mario")){
+            chat.addMensagem("preciso salvar a princesa", mario);
+            chat.addMensagem("ok", eu);
+        }
 
+        else if(user2.getName().equals("Luigi")){
+            chat.addMensagem("blablablabla", luigi);
+            chat.addMensagem("blabl  abl abl ablab labl abla dsdsa dsadk elkwq", eu);
+        }
         return chat;
 
     }

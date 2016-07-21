@@ -25,6 +25,7 @@ public class ContactsAdapter extends BaseAdapter {
 
     public ContactsAdapter(Context context){
         users = new Users();
+
         this.context = context;
     }
 
@@ -50,8 +51,6 @@ public class ContactsAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View gridView;
-
-        if(convertView == null){
             //gerando gridView
             gridView = new View(context);
             gridView = inflater.inflate(R.layout.user_contacts, null);
@@ -73,10 +72,7 @@ public class ContactsAdapter extends BaseAdapter {
             TextView textView3 = (TextView) gridView.findViewById(R.id.contacts_lastMessage);
             textView3.setText(users.getChat(u).getLastMessage().getResumida());
 
-        }
-        else{
-            gridView = (View)convertView;
-        }
+
         return gridView;
     }
 

@@ -15,6 +15,7 @@ import java.util.Set;
 public class UserColor {
 
     private List<Integer> colors;
+    private static int count = 0;
 
     public UserColor(){
        colors = new ArrayList<>();
@@ -24,9 +25,9 @@ public class UserColor {
     }
 
     public int random(){
-        Collections.shuffle(colors);
-        Iterator i = colors.iterator();
-        return (int)i.next();
+        if(count == 3)
+            count = 0;
+        return colors.get(count++);
     }
 
 }
