@@ -109,6 +109,7 @@
             </EditText>
 
             <Button
+                android:id="@+id/chat_send_message_button"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/sendbutton"
