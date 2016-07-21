@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_bottom_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/border"
+    tools:context="io.github.vmvini.exerciciopdm.ThirdActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/white">
+
+        <!--TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IFPBGroupChat"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|top"
+            android:textStyle="bold"
+            android:textSize="40dp"
+            android:layout_centerHorizontal="true" /-->
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@color/usericon.orange"
+            >
+
+            <TextView
+                android:id="@+id/chat.usericon"
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginRight="10px"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                android:textAlignment="center"
+                android:background="@drawable/circle_textview" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/chat.username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@+id/label"
+                android:layout_marginTop="5px"
+                android:textSize="15px" >
+            </TextView>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/chat.username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OLA MUNDO MEU DEUS DO CEU"
+            android:background="@drawable/my_message"
+            android:layout_marginTop="5px"
+            android:textSize="30px" />
+
+
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
