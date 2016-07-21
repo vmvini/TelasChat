@@ -12,5 +12,8 @@
     <color name="me_msg">#F4DBF9</color>
     <color name="other_msg">#D8F0BE</color>
     <color name="sendmsg">#417505</color>
+    <color name="usericon.orange">#F5A623</color>
+    <color name="usericon.green">#7ED321</color>
+    <color name="usericon.yellow">#F8E71C</color>
 
 </resources>

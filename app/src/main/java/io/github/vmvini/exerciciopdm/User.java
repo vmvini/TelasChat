@@ -1,11 +1,20 @@
 package io.github.vmvini.exerciciopdm;
 
+import java.util.List;
+
 /**
  * Created by vmvini on 20/07/16.
  */
 public class User {
 
     private String name;
+
+    private int color;
+
+    public User(){
+        UserColor uc = new UserColor();
+        color = uc.random();
+    }
 
     public void setName(String name){
         this.name = name;
@@ -27,5 +36,10 @@ public class User {
     private String getNCharacters(String word, int q){
         return word.substring(0, Math.min(word.length(), q));
     }
+
+    public int getColor(){
+        return color;
+    }
+
 
 }

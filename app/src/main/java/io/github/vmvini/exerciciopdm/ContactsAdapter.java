@@ -1,6 +1,13 @@
 package io.github.vmvini.exerciciopdm;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +63,10 @@ public class ContactsAdapter extends BaseAdapter {
 
             //setando icone do contato
             TextView textView2 = (TextView) gridView.findViewById(R.id.contacts_usericon);
+            GradientDrawable ld = (GradientDrawable)textView2.getBackground();
+            ld.setColor(context.getResources().getColor(u.getColor()));
+
+
             textView2.setText(u.getAbrev());
 
             //setando ultima mensagem do chat
