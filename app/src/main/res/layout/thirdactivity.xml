@@ -39,13 +39,13 @@
             android:paddingBottom="20dp"
             android:paddingLeft="10dp"
             android:background="@color/usericon.orange"
-            >
+            android:id="@+id/chat.header">
 
             <TextView
                 android:id="@+id/chat.usericon"
-                android:layout_width="50px"
-                android:layout_height="50px"
-                android:layout_marginRight="10px"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
                 android:textColor="@android:color/white"
                 android:textSize="40sp"
                 android:textAlignment="center"
@@ -64,17 +64,66 @@
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/chat.username"
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/chat_messages_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OLA MUNDO MEU DEUS DO CEU"
-            android:background="@drawable/my_message"
-            android:layout_marginTop="5px"
-            android:textSize="30px" />
+            android:layout_below="@id/chat.header"
+            android:layout_marginBottom="50dip" >
+
+            <ListView
+                android:id="@+id/chat_messages"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
 
+        <LinearLayout
+            android:id="@+id/chat_wrap_sendmessage"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            >
+
+            <EditText
+
+                android:hint="Digite sua mensagem..."
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+
+                android:id="@+id/chat.sendmsg"
+
+                android:layout_marginLeft="5dp"
+
+                android:background="@drawable/sendmessage"
+                android:singleLine="true"
+                android:maxWidth="300dp"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                android:gravity="center_vertical|left"
+                android:maxEms="10"
+                >
+
+
+
+            </EditText>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="OK"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical|center"
+
+
+                />
+
+
+        </LinearLayout>
 
 
     </RelativeLayout>
