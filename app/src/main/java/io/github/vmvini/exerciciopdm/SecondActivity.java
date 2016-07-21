@@ -12,7 +12,7 @@ import android.widget.Toast;
 /**
  * Created by vmvini on 20/07/16.
  */
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements ContactsPresenter {
 
     private GridView gridView;
 
@@ -32,14 +32,20 @@ public class SecondActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-                intent.putExtra("user", users.getUsers().get(position));
-                startActivity(intent);
-                System.out.println("THIRD ACTIVITY");
+               User user = users.getUsers().get(position);
+                showChat(user);
+
             }
         });
 
 
+    }
+
+    @Override
+    public void showChat(User user) {
+        Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+        intent.putExtra("user", user );
+        startActivity(intent);
     }
 }
 
