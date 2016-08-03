@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import httpclient.JsonClient;
+import httpclient.LoginClient;
+
 public class MainActivity extends AppCompatActivity implements LoginPresenter {
 
     private EditText password;
@@ -26,10 +29,8 @@ public class MainActivity extends AppCompatActivity implements LoginPresenter {
             public void onClick(View v) {
                 try{
                     login(getPassword());
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    startActivity(intent);
                 }
-                catch(NoPasswordException | IncorrectPasswordException e){
+                catch(NoPasswordException e){
                     showResponse(e.getMessage());
                 }
             }
@@ -54,10 +55,9 @@ public class MainActivity extends AppCompatActivity implements LoginPresenter {
     }
 
     @Override
-    public void login(String password) throws IncorrectPasswordException{
-
-            LoginService.login(password);
-
+    public void login(String password){
+        LoginClient lc = new LoginClient(this, password);
+        lc.start();
     }
 
     @Override

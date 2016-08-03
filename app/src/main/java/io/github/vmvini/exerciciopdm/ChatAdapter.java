@@ -20,10 +20,12 @@ public class ChatAdapter extends BaseAdapter {
     private Chat chat;
 
     private Context context;
+    private User loggedUser;
 
-    public ChatAdapter(Context context, Chat chat){
+    public ChatAdapter(Context context, Chat chat, User loggedUser){
         this.chat = chat;
         this.context = context;
+        this.loggedUser = loggedUser;
     }
 
     @Override
@@ -92,8 +94,10 @@ public class ChatAdapter extends BaseAdapter {
 
     private void setAlignment(MessageView holder, Mensagem m){
 
-        //se for mensagem enviada por mim
-        if(m.getUser().getName().equals("Marcus Vinícius")){
+        //se for mensagem enviada por usuario logado
+        System.out.println("USUARIO LOGADO: " + loggedUser.getName());
+        System.out.println("CONTATO: " + m.getUser().getName());
+        if(m.getUser().getName().equals(loggedUser.getName())){
             holder.bubble.setBackgroundResource(R.drawable.my_message);
 
             LinearLayout.LayoutParams layoutParams =

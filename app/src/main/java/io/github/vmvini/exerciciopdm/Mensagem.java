@@ -1,13 +1,17 @@
 package io.github.vmvini.exerciciopdm;
 
+import java.io.Serializable;
+
 /**
  * Created by vmvini on 20/07/16.
  */
-public class Mensagem {
+public class Mensagem implements Serializable {
 
     private User user;
 
     private String mensagem;
+
+
 
     public void setMensagem(String msg){
         mensagem = msg;

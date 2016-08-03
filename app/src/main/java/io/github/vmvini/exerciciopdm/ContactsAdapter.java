@@ -15,16 +15,18 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by vmvini on 21/07/16.
  */
 public class ContactsAdapter extends BaseAdapter {
 
-    private Users users;
+    private User loggedUser;
     private Context context;
 
-    public ContactsAdapter(Context context, Users users){
-        this.users = users;
+    public ContactsAdapter(Context context, User loggedUser){
+        this.loggedUser = loggedUser;
 
         this.context = context;
     }
@@ -32,12 +34,12 @@ public class ContactsAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return users.getUsers().size();
+        return loggedUser.getUsers().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return users.getUsers().get(position);
+        return loggedUser.getUsers().get(position);
     }
 
     @Override
@@ -70,7 +72,9 @@ public class ContactsAdapter extends BaseAdapter {
 
             //setando ultima mensagem do chat
             TextView textView3 = (TextView) gridView.findViewById(R.id.contacts_lastMessage);
-            textView3.setText(users.getChat(u).getLastMessage().getResumida());
+            textView3.setText(loggedUser.getLastMessage(u));
+
+
 
 
         return gridView;

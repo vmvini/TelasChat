@@ -9,7 +9,7 @@ public interface LoginPresenter {
 
     void erasePassword();
 
-    void login(String password) throws IncorrectPasswordException;
+    void login(String password) throws Exception;
 
     void showResponse(String msg);
 

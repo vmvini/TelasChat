@@ -19,7 +19,8 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
     private ChatAdapter chatAdapter;
     private TextView username;
     private TextView usericon;
-    private User user;
+    private Chat chat;
+    private User loggedUser;
 
 
     @Override
@@ -28,7 +29,8 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         setContentView(R.layout.thirdactivity);
 
          messagesContainer = (ListView) findViewById(R.id.chat_messages);
-        user = (User) getIntent().getSerializableExtra("user");
+        chat = (Chat) getIntent().getSerializableExtra("chat");
+        loggedUser = (User) getIntent().getSerializableExtra("LoggedUser");
 
         username = (TextView) findViewById(R.id.chat_username);
         usericon = (TextView) findViewById(R.id.chat_usericon);
@@ -37,12 +39,12 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         gd.setColor(getResources().getColor(R.color.white));
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.chat_header);
-        ll.setBackgroundColor(getResources().getColor(user.getColor()));
+        ll.setBackgroundColor(getResources().getColor(chat.getUser().getColor()));
 
         usericon.setTextColor(getResources().getColor(R.color.black));
 
-        username.setText(user.getName());
-        usericon.setText(user.getAbrev());
+        username.setText(chat.getUser().getName());
+        usericon.setText(chat.getUser().getAbrev());
 
 
         Button button = (Button)findViewById(R.id.chat_send_message_button);
@@ -53,7 +55,7 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
             }
         });
 
-        loadChat(user);
+        loadChat(chat);
 
     }
 
@@ -63,9 +65,12 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         Mensagem nova = new Mensagem();
 
         nova.setMensagem(et.getText().toString());
+
+        //setando remetente
         User eu = new User();
-        eu.setName("Marcus Vinícius");
+        eu.setName(loggedUser.getName());
         nova.setUser(eu);
+
         return nova;
     }
 
@@ -78,11 +83,11 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
     }
 
 
-    private void loadChat(User user){
-        Users users = new Users();
-        Chat chat = users.getChat(user);
+    private void loadChat(Chat chat){
+        //Users users = new Users();
+        //Chat chat = users.getChat(user);
 
-        chatAdapter = new ChatAdapter(ThirdActivity.this, chat);
+        chatAdapter = new ChatAdapter(ThirdActivity.this, chat, loggedUser);
 
         messagesContainer.setAdapter(chatAdapter);
 
