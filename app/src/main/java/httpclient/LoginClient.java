@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.HttpURLConnection;
+
 import io.github.vmvini.exerciciopdm.MainActivity;
 import io.github.vmvini.exerciciopdm.SecondActivity;
 import io.github.vmvini.exerciciopdm.User;
@@ -19,8 +21,8 @@ public class LoginClient extends JsonClient {
 
 
 
-    public LoginClient(MainActivity activity, String password){
-        super("http://10.0.2.2:3000/login?password=" + password, activity);
+    public LoginClient(MainActivity activity, String name,  String password){
+        super("http://10.0.2.2:3000/login?password=" + password, activity, "GET");
     }
 
     @Override
@@ -45,4 +47,11 @@ public class LoginClient extends JsonClient {
         }
 
     }
+
+    public void sendJsonObject(HttpURLConnection urlConnection){
+
+    }
+
+
+
 }

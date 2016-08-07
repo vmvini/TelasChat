@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import httpclient.JsonClient;
-import httpclient.LoginClient;
+import io.github.vmvini.exerciciopdm.services.LoginClient;
 
 public class MainActivity extends AppCompatActivity implements LoginPresenter {
 
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements LoginPresenter {
             @Override
             public void onClick(View v) {
                 try{
-                    login(getPassword());
+                    login(getName(), getPassword());
                 }
                 catch(NoPasswordException e){
                     showResponse(e.getMessage());
@@ -55,9 +54,18 @@ public class MainActivity extends AppCompatActivity implements LoginPresenter {
     }
 
     @Override
-    public void login(String password){
-        LoginClient lc = new LoginClient(this, password);
+    public void login(String name, String password){
+        LoginClient lc = new LoginClient(this, name, password);
         lc.start();
+    }
+
+    public String getName() throws NoPasswordException{
+        EditText nameText = (EditText) findViewById(R.id.login_username);
+        Editable e = nameText.getText();
+        if(e.toString().isEmpty()){
+            throw new NoPasswordException("Digite seu nome");
+        }
+        return nameText.getText().toString();
     }
 
     @Override

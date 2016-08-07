@@ -71,11 +71,27 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="text"
+            android:gravity="center_horizontal"
+            android:ems="12"
+            android:id="@+id/login_username"
+            android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true"
+            android:hint="DIGITE SEU NOME"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/password"
+            android:textColorHint="#ffffff" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:gravity="center_horizontal"
             android:ems="12"
             android:id="@+id/password"
-            android:layout_below="@+id/username"
+            android:layout_below="@+id/login_username"
             android:layout_centerHorizontal="true"
             android:hint="DIGITE SUA SENHA"
             android:paddingTop="15dp"

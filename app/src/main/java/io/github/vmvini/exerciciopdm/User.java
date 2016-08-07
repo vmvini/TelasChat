@@ -10,43 +10,10 @@ import java.util.List;
 public class User implements Serializable {
 
     private String name;
+    private String salt;
+    private String hash;
 
-    private List<Chat> chats;
 
-    private List<User> users;
-
-    public void setUsers(List<User> users){
-        this.users = users;
-
-    }
-
-    public Chat getChat(User user){
-        for(int i = 0; i < chats.size(); i++){
-            if(chats.get(i).getUser().getName().equals(user.getName())){
-                return chats.get(i);
-            }
-        }
-        return null;
-    }
-
-    public String getLastMessage(User user){
-        Chat c = getChat(user);
-        if(c == null)
-            return "";
-        return c.getLastMessage().getResumida();
-    }
-
-    public List<User> getUsers(){
-        return users;
-    }
-
-    public void setChats(List<Chat> chats){
-        this.chats = chats;
-    }
-
-    public List<Chat> getChats(){
-        return chats;
-    }
 
     private int color;
 
@@ -55,13 +22,6 @@ public class User implements Serializable {
         color = uc.random();
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public String getName(){
-        return name;
-    }
 
     @Override
     public String toString(){
@@ -78,6 +38,38 @@ public class User implements Serializable {
 
     public int getColor(){
         return color;
+    }
+
+    public void setColor(int color){
+        if(color == 0){
+            UserColor uc = new UserColor();
+            this.color = uc.random();
+        }
+        else
+            this.color = color;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setHash(String hash){
+        this.hash = hash;
+    }
+
+    public String getHash(){
+        return hash;
+    }
+
+    public void setSalt(String salt){
+        this.salt = salt;
+    }
+    public String getSalt(){
+        return salt;
     }
 
 

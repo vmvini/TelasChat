@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import httpclient.JsonPostClient;
+
 /**
  * Created by vmvini on 21/07/16.
  */
@@ -73,7 +75,13 @@ public class ChatAdapter extends BaseAdapter {
 
 
     public void addMessage(Mensagem msg){
+
         chat.addMensagem(msg.getMensagem(), msg.getUser());
+
+        //adicionando ao user (estrutura de documento)
+        //loggedUser.getChat( chat.getUser() ).addMensagem(msg.getMensagem(), msg.getUser());
+        //JsonPostClient jpc = new JsonPostClient(loggedUser);
+       // jpc.start();
     }
 
     private static class MessageView {
@@ -95,8 +103,8 @@ public class ChatAdapter extends BaseAdapter {
     private void setAlignment(MessageView holder, Mensagem m){
 
         //se for mensagem enviada por usuario logado
-        System.out.println("USUARIO LOGADO: " + loggedUser.getName());
-        System.out.println("CONTATO: " + m.getUser().getName());
+        //System.out.println("USUARIO LOGADO: " + loggedUser.getName());
+        //System.out.println("CONTATO: " + m.getUser().getName());
         if(m.getUser().getName().equals(loggedUser.getName())){
             holder.bubble.setBackgroundResource(R.drawable.my_message);
 

@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import httpclient.JsonPostClient;
+import httpclient.SendMessageClient;
+
 /**
  * Created by vmvini on 21/07/16.
  */
@@ -78,6 +81,9 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
     public void sendMessage(Mensagem m){
         if(!m.getMensagem().isEmpty()){
             chatAdapter.addMessage(m);
+            //SendMessageClient smc = new SendMessageClient(this, loggedUser);
+            //smc.start();
+
         }
 
     }

@@ -17,10 +17,8 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
 
     private GridView gridView;
 
-    //serviço para pegar usuarios
-    private Users users;
+    private UserContacts loggedUser;
 
-    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +27,9 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
         setContentView(R.layout.secondactivity);
 
         //setando usuario logado
-        user = (User) getIntent().getSerializableExtra("user");
+        loggedUser = (UserContacts) getIntent().getSerializableExtra("loggedUser");
         TextView username = (TextView) findViewById(R.id.second_logged_username);
-        username.setText(user.getName());
+        username.setText(loggedUser.getUser().getName());
 
 
         gridView = (GridView) findViewById(R.id.second_contacts);
@@ -39,17 +37,17 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
 
 
         //fazer isso com ContactsClient
-        gridView.setAdapter(new ContactsAdapter(this, user));
+        gridView.setAdapter(new ContactsAdapter(this, loggedUser));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                //User user = users.getUsers().get(position);
                 // showChat(user);
-                User contact = user.getUsers().get(position);
+                /*User contact = user.getUsers().get(position);
                 Chat chat = user.getChat(contact);
                 chat.setUser(contact);
-                showChat(chat);
+                showChat(chat);*/
 
             }
         });
@@ -60,7 +58,7 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
     public void showChat(Chat chat) {
         Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
         intent.putExtra("chat", chat );
-        intent.putExtra("LoggedUser", user);
+        //intent.putExtra("LoggedUser", user);
         startActivity(intent);
     }
 }

@@ -22,10 +22,10 @@ import java.util.List;
  */
 public class ContactsAdapter extends BaseAdapter {
 
-    private User loggedUser;
+    private UserContacts loggedUser;
     private Context context;
 
-    public ContactsAdapter(Context context, User loggedUser){
+    public ContactsAdapter(Context context, UserContacts loggedUser){
         this.loggedUser = loggedUser;
 
         this.context = context;
@@ -34,12 +34,12 @@ public class ContactsAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return loggedUser.getUsers().size();
+        return loggedUser.getContacts().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return loggedUser.getUsers().get(position);
+        return loggedUser.getContacts().get(position);
     }
 
     @Override
@@ -72,7 +72,8 @@ public class ContactsAdapter extends BaseAdapter {
 
             //setando ultima mensagem do chat
             TextView textView3 = (TextView) gridView.findViewById(R.id.contacts_lastMessage);
-            textView3.setText(loggedUser.getLastMessage(u));
+            //textView3.setText(loggedUser.getLastMessage(u));
+            textView3.setText("teste");
 
 
 

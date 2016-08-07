@@ -7,9 +7,11 @@ public interface LoginPresenter {
 
     String getPassword() throws  NoPasswordException;
 
+    String getName() throws NoPasswordException;
+
     void erasePassword();
 
-    void login(String password) throws Exception;
+    void login(String name, String password) throws IncorrectPasswordException;
 
     void showResponse(String msg);
 
