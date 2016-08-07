@@ -12,6 +12,8 @@ public class HttpFacade {
 
     public JSONObject post(String url, JSONObject args)throws IOException, JSONException{
         Connection c = new Connection(url);
+        Response postResp = new PostResponse(c.getConnection());
+        c.setResponse(postResp);
         Request r = new PostRequest(c, args);
         JSONObject resp = r.send();
         return resp;
@@ -19,6 +21,8 @@ public class HttpFacade {
 
     public JSONObject get(String url) throws IOException, JSONException{
         Connection c = new Connection(url);
+        Response getResp = new GetResponse(c.getUrlObject());
+        c.setResponse(getResp);
         Request r = new GetRequest(c);
         JSONObject resp = r.send();
         return resp;

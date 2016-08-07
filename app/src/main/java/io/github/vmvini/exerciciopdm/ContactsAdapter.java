@@ -1,5 +1,6 @@
 package io.github.vmvini.exerciciopdm;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
@@ -17,15 +18,20 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import io.github.vmvini.exerciciopdm.services.GenericClient;
+import io.github.vmvini.exerciciopdm.services.LastMessageClient;
+
 /**
  * Created by vmvini on 21/07/16.
  */
 public class ContactsAdapter extends BaseAdapter {
 
     private UserContacts loggedUser;
-    private Context context;
+    private Activity context;
 
-    public ContactsAdapter(Context context, UserContacts loggedUser){
+    private GenericClient lastMessageService;
+
+    public ContactsAdapter(Activity context, UserContacts loggedUser){
         this.loggedUser = loggedUser;
 
         this.context = context;
@@ -73,9 +79,10 @@ public class ContactsAdapter extends BaseAdapter {
             //setando ultima mensagem do chat
             TextView textView3 = (TextView) gridView.findViewById(R.id.contacts_lastMessage);
             //textView3.setText(loggedUser.getLastMessage(u));
-            textView3.setText("teste");
+            //textView3.setText("teste");
 
-
+            lastMessageService = new LastMessageClient(context, loggedUser.getUser(), u, textView3);
+            lastMessageService.start();
 
 
         return gridView;

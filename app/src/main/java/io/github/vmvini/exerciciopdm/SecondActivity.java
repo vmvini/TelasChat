@@ -42,7 +42,7 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               //User user = users.getUsers().get(position);
+               User user = loggedUser.getContacts().get(position);
                 // showChat(user);
                 /*User contact = user.getUsers().get(position);
                 Chat chat = user.getChat(contact);

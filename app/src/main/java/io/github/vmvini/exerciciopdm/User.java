@@ -12,6 +12,7 @@ public class User implements Serializable {
     private String name;
     private String salt;
     private String hash;
+    private String _id;
 
 
 
@@ -20,6 +21,14 @@ public class User implements Serializable {
     public User(){
         UserColor uc = new UserColor();
         color = uc.random();
+    }
+
+    public String get_id(){
+        return _id;
+    }
+
+    public void set_id(String _id){
+        this._id = _id;
     }
 
 
