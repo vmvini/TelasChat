@@ -16,7 +16,6 @@ import io.github.vmvini.exerciciopdm.http.HttpFacade;
  */
 public class LastMessageClient extends GenericClient {
 
-    private Activity activity;
     private User user1, user2;
     private TextView textView;
 

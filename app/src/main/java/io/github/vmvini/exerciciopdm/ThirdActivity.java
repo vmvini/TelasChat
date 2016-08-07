@@ -10,8 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import httpclient.JsonPostClient;
 import httpclient.SendMessageClient;
+import io.github.vmvini.exerciciopdm.services.GenericClient;
+import io.github.vmvini.exerciciopdm.services.LoadChatClient;
 
 /**
  * Created by vmvini on 21/07/16.
@@ -24,6 +28,7 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
     private TextView usericon;
     private Chat chat;
     private User loggedUser;
+    private User contact;
 
 
     @Override
@@ -32,8 +37,11 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         setContentView(R.layout.thirdactivity);
 
          messagesContainer = (ListView) findViewById(R.id.chat_messages);
-        chat = (Chat) getIntent().getSerializableExtra("chat");
-        loggedUser = (User) getIntent().getSerializableExtra("LoggedUser");
+
+        //usuarios do chat
+        loggedUser = (User) getIntent().getSerializableExtra("loggedUser");
+        contact = (User) getIntent().getSerializableExtra("contact");
+
 
         username = (TextView) findViewById(R.id.chat_username);
         usericon = (TextView) findViewById(R.id.chat_usericon);
@@ -42,12 +50,12 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         gd.setColor(getResources().getColor(R.color.white));
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.chat_header);
-        ll.setBackgroundColor(getResources().getColor(chat.getUser().getColor()));
+        ll.setBackgroundColor(getResources().getColor(contact.getColor()));
 
         usericon.setTextColor(getResources().getColor(R.color.black));
 
-        username.setText(chat.getUser().getName());
-        usericon.setText(chat.getUser().getAbrev());
+        username.setText(contact.getName());
+        usericon.setText(contact.getAbrev());
 
 
         Button button = (Button)findViewById(R.id.chat_send_message_button);
@@ -58,13 +66,20 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
             }
         });
 
-        loadChat(chat);
+        chat = new Chat();
+        chat.setUser1(loggedUser);
+        chat.setUser2(contact);
+        chat.setMessages(new ArrayList<Mensagem>());
+
+        GenericClient chatService = new LoadChatClient(this, chat );
+        chatService.start();
+        //loadChat(chat);
 
     }
 
     @Override
     public Mensagem getTypedMessage(){
-        EditText et = (EditText)findViewById(R.id.chat_sendmsg);
+        /*EditText et = (EditText)findViewById(R.id.chat_sendmsg);
         Mensagem nova = new Mensagem();
 
         nova.setMensagem(et.getText().toString());
@@ -74,22 +89,23 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         eu.setName(loggedUser.getName());
         nova.setUser(eu);
 
-        return nova;
+        return nova;*/
+        return null;
     }
 
     @Override
     public void sendMessage(Mensagem m){
-        if(!m.getMensagem().isEmpty()){
+        /*if(!m.getMensagem().isEmpty()){
             chatAdapter.addMessage(m);
             //SendMessageClient smc = new SendMessageClient(this, loggedUser);
             //smc.start();
 
-        }
+        }*/
 
     }
 
 
-    private void loadChat(Chat chat){
+    public void loadChat(Chat chat){
         //Users users = new Users();
         //Chat chat = users.getChat(user);
 

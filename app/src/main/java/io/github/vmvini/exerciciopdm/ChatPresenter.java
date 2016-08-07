@@ -8,4 +8,7 @@ public interface ChatPresenter {
     Mensagem getTypedMessage();
 
     public void sendMessage(Mensagem m);
+
+    void loadChat(Chat chat);
+
 }

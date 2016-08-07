@@ -7,38 +7,43 @@ import java.io.Serializable;
  */
 public class Mensagem implements Serializable {
 
-    private User user;
+    /*
+    * message: String,
+	from: { type: UserSchema }
+    * */
 
-    private String mensagem;
+    private User from;
+
+    private String message;
 
 
 
-    public void setMensagem(String msg){
-        mensagem = msg;
+    public void setMessage(String message){
+        this.message = message;
     }
 
-    public String getMensagem(){
-        return mensagem;
+    public String getMessage(){
+        return message;
     }
 
     public String getResumida(){
-        int length = mensagem.length();
+        int length = message.length();
         if(length >= 27)
-            return getNCharacters(mensagem, 24) + "...";
-        return mensagem;
+            return getNCharacters(message, 24) + "...";
+        return message;
     }
 
 
 
-    public void setUser(User user){
-        this.user = user;
+    public void setFrom(User from){
+        this.from = from;
     }
-    public User getUser(){
-        return user;
+    public User getFrom(){
+        return from;
     }
 
     public String toString(){
-        return mensagem;
+        return message;
     }
 
     private String getNCharacters(String word, int q){

@@ -7,7 +7,7 @@ import java.util.List;
  * Created by vmvini on 20/07/16.
  */
 public class Users {
-
+/*
     private User eu, anamaria, joao, mariana, mario, luigi;
     private List<User> users;
 
@@ -79,5 +79,5 @@ public class Users {
         return chat;
 
     }
-
+*/
 }

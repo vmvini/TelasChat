@@ -6,6 +6,6 @@ package io.github.vmvini.exerciciopdm;
 public interface ContactsPresenter {
 
 
-    void showChat(Chat chat);
+    void showChat(User loggedUser, User contact);
 
 }

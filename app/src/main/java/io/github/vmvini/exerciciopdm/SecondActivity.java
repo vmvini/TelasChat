@@ -10,6 +10,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by vmvini on 20/07/16.
  */
@@ -42,7 +44,9 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               User user = loggedUser.getContacts().get(position);
+               User contact = loggedUser.getContacts().get(position);
+
+                showChat(loggedUser.getUser(), contact);
                 // showChat(user);
                 /*User contact = user.getUsers().get(position);
                 Chat chat = user.getChat(contact);
@@ -55,10 +59,10 @@ public class SecondActivity extends AppCompatActivity implements ContactsPresent
 
     }
 
-    public void showChat(Chat chat) {
+    public void showChat(User loggedUser, User contact) {
         Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-        intent.putExtra("chat", chat );
-        //intent.putExtra("LoggedUser", user);
+        intent.putExtra("loggedUser", loggedUser );
+        intent.putExtra("contact", contact);
         startActivity(intent);
     }
 }

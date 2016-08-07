@@ -32,8 +32,8 @@ public class ChatAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (chat.getMensagens() != null) {
-            return chat.getMensagens().size();
+        if (chat.getMessages() != null) {
+            return chat.getMessages().size();
         } else {
             return 0;
         }
@@ -41,8 +41,8 @@ public class ChatAdapter extends BaseAdapter {
 
     @Override
     public Mensagem getItem(int position) {
-        if (chat.getMensagens() != null) {
-            return chat.getMensagens().get(position);
+        if (chat.getMessages() != null) {
+            return chat.getMessages().get(position);
         } else {
             return null;
         }
@@ -60,14 +60,14 @@ public class ChatAdapter extends BaseAdapter {
         Mensagem msg = getItem(position);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        view = new View(context);
+        //view = new View(context);
         view = inflater.inflate(R.layout.chat_messages, null);
 
         MessageView mv = createViewHolder(view);
 
 
         setAlignment(mv, msg);
-        mv.msgContent.setText(msg.getMensagem());
+        mv.msgContent.setText(msg.getMessage());
 
         return view;
 
@@ -76,7 +76,7 @@ public class ChatAdapter extends BaseAdapter {
 
     public void addMessage(Mensagem msg){
 
-        chat.addMensagem(msg.getMensagem(), msg.getUser());
+       // chat.addMensagem(msg.getMensagem(), msg.getUser());
 
         //adicionando ao user (estrutura de documento)
         //loggedUser.getChat( chat.getUser() ).addMensagem(msg.getMensagem(), msg.getUser());
@@ -105,7 +105,7 @@ public class ChatAdapter extends BaseAdapter {
         //se for mensagem enviada por usuario logado
         //System.out.println("USUARIO LOGADO: " + loggedUser.getName());
         //System.out.println("CONTATO: " + m.getUser().getName());
-        if(m.getUser().getName().equals(loggedUser.getName())){
+        if(m.getFrom().get_id().equals(loggedUser.get_id())){
             holder.bubble.setBackgroundResource(R.drawable.my_message);
 
             LinearLayout.LayoutParams layoutParams =
