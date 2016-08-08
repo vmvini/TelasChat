@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import httpclient.JsonPostClient;
+import io.github.vmvini.exerciciopdm.services.GenericClient;
+import io.github.vmvini.exerciciopdm.services.SendMessageClient;
+
 
 /**
  * Created by vmvini on 21/07/16.
@@ -20,14 +22,15 @@ import httpclient.JsonPostClient;
 public class ChatAdapter extends BaseAdapter {
 
     private Chat chat;
-
-    private Context context;
+    private GenericClient sendMessageService;
+    private Activity context;
     private User loggedUser;
 
-    public ChatAdapter(Context context, Chat chat, User loggedUser){
+    public ChatAdapter(Activity context, Chat chat, User loggedUser){
         this.chat = chat;
         this.context = context;
         this.loggedUser = loggedUser;
+
     }
 
     @Override
@@ -35,6 +38,7 @@ public class ChatAdapter extends BaseAdapter {
         if (chat.getMessages() != null) {
             return chat.getMessages().size();
         } else {
+            System.out.println("NAO POSSUI NENHUMA MENSAGEM");
             return 0;
         }
     }
@@ -44,6 +48,7 @@ public class ChatAdapter extends BaseAdapter {
         if (chat.getMessages() != null) {
             return chat.getMessages().get(position);
         } else {
+            System.out.println("NAO POSSUI NENHUMA MENSAGEM");
             return null;
         }
     }
@@ -69,19 +74,21 @@ public class ChatAdapter extends BaseAdapter {
         setAlignment(mv, msg);
         mv.msgContent.setText(msg.getMessage());
 
+        System.out.println("MENSAGEM CARREGADA: " + msg.getMessage());
+
         return view;
 
     }
 
 
     public void addMessage(Mensagem msg){
+        System.out.println("chat.addMessage");
+        chat.addMessage(msg);
+        sendMessageService = new SendMessageClient(context, chat, msg);
+        sendMessageService.start();
 
-       // chat.addMensagem(msg.getMensagem(), msg.getUser());
 
-        //adicionando ao user (estrutura de documento)
-        //loggedUser.getChat( chat.getUser() ).addMensagem(msg.getMensagem(), msg.getUser());
-        //JsonPostClient jpc = new JsonPostClient(loggedUser);
-       // jpc.start();
+
     }
 
     private static class MessageView {

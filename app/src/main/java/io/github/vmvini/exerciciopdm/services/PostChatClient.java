@@ -29,7 +29,7 @@ public class PostChatClient extends GenericClient {
         HttpFacade http = new HttpFacade();
         JSONObject args = new JSONObject();
         Gson gson = new Gson();
-        args.put( "chat", gson.toJson(chat).toString() );
+        args.put( "chat", gson.toJson(chat) );
         return http.post("http://10.0.2.2:3000/api/chat/", args );
     }
 

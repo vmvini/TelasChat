@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import httpclient.JsonPostClient;
-import httpclient.SendMessageClient;
 import io.github.vmvini.exerciciopdm.services.GenericClient;
 import io.github.vmvini.exerciciopdm.services.LoadChatClient;
 
@@ -79,28 +77,27 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
 
     @Override
     public Mensagem getTypedMessage(){
-        /*EditText et = (EditText)findViewById(R.id.chat_sendmsg);
+        EditText et = (EditText)findViewById(R.id.chat_sendmsg);
         Mensagem nova = new Mensagem();
 
-        nova.setMensagem(et.getText().toString());
+        nova.setMessage(et.getText().toString());
 
         //setando remetente
-        User eu = new User();
-        eu.setName(loggedUser.getName());
-        nova.setUser(eu);
+        nova.setFrom(loggedUser);
 
-        return nova;*/
-        return null;
+        return nova;
     }
 
     @Override
     public void sendMessage(Mensagem m){
-        /*if(!m.getMensagem().isEmpty()){
+        if(!m.getMessage().isEmpty()){
+            System.out.println("chatAdapter");
+            System.out.println(chatAdapter);
             chatAdapter.addMessage(m);
             //SendMessageClient smc = new SendMessageClient(this, loggedUser);
             //smc.start();
 
-        }*/
+        }
 
     }
 
@@ -112,9 +109,12 @@ public class ThirdActivity extends AppCompatActivity implements ChatPresenter {
         chatAdapter = new ChatAdapter(ThirdActivity.this, chat, loggedUser);
 
         messagesContainer.setAdapter(chatAdapter);
+        System.out.println("chatAdapter construido");
 
-        /*for(int i = 0; i < chat.getMensagens().size(); i++){
-            chatAdapter.addMessage(chat.getMensagens().get(i));
+        /*for(int i = 0; i < chat.getMessages().size(); i++){
+            System.out.println("mensagem carregada");
+            System.out.println(chat.getMessages().get(i).getMessage());
+            chatAdapter.addMessage(chat.getMessages().get(i));
             chatAdapter.notifyDataSetChanged();
             messagesContainer.setSelection(messagesContainer.getCount() - 1);
         }*/

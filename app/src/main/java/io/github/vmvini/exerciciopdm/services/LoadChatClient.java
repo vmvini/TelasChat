@@ -33,6 +33,7 @@ public class LoadChatClient extends GenericClient {
     public  JSONObject getJSONObjectFromURL() throws IOException, JSONException{
         ///chat/:user1/:user2
         HttpFacade http = new HttpFacade();
+        System.out.println("requisição get ao chat");
         return http.get("http://10.0.2.2:3000/api/chat/" + chat.getUser1().get_id() + "/" + chat.getUser2().get_id());
 
 
@@ -40,13 +41,15 @@ public class LoadChatClient extends GenericClient {
 
     public  void custom(JSONObject json){
 
+        System.out.println("recebeu json de requisiçao get ao chat");
         try{
             if(json.getString("success").equals("true")){
                 Gson gson = new Gson();
                 chat = gson.fromJson(json.getString("chat"), Chat.class);
-
+                ((ThirdActivity)activity).loadChat(chat);
             }
             else{
+                System.out.println("gerar requisiçao post para criar novo chat");
                 GenericClient postChat = new PostChatClient(activity, chat);
                 postChat.start();
             }

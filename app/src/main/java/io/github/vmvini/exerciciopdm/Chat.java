@@ -21,6 +21,8 @@ public class Chat implements Serializable {
     private User user1;
     private User user2;
 
+    private String _id;
+
     public void setUser1(User user1){
         this.user1 = user1;
     }
@@ -39,8 +41,23 @@ public class Chat implements Serializable {
 
     }
 
+    public void set_id(String _id){
+        this._id = _id;
+    }
+
+    public String get_id(){
+        return _id;
+    }
+
     public void setMessages(List<Mensagem> messages){
         this.messages = messages;
+    }
+
+    public void addMessage(Mensagem message){
+        if(this.messages == null){
+            this.messages = new ArrayList<Mensagem>();
+        }
+        this.messages.add(message);
     }
 
     public List<Mensagem> getMessages(){
